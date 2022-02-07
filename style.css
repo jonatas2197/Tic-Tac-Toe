@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(3, 201, 169, 9);
+}
+
+.container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+
+.container.x .playground:not(.x):not(.circle):hover::after,
+.container.x .playground:not(.x):not(.circle):hover::before,
+.container.circle .playground:not(.x):not(.circle):hover::after,
+.container.x .playground:not(.x):not(.circle):hover::before {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Célula */
+.playground {
+  width: 100px;
+  height: 100px;
+  border: 3px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.playground{
+  cursor: pointer;
+}
+
+.playground:nth-child(1),
+.playground:nth-child(2),
+.playground:nth-child(3) {
+  border-top: none;
+}
+
+.playground:nth-child(1),
+.playground:nth-child(4),
+.playground:nth-child(7) {
+  border-left: none;
+}
+
+.playground:nth-child(7),
+.playground:nth-child(8),
+.playground:nth-child(9) {
+  border-bottom: none;
+}
+
+.playground:nth-child(3),
+.playground:nth-child(6),
+.playground:nth-child(9) {
+  border-right: none;
+}
+
+/* X */
+.playground.x::before,
+.playground.x::after,
+.container.x .playground:not(.x):not(.circle):hover::after,
+.container.x .playground:not(.x):not(.circle):hover::before {
+  content: "";
+  height: calc(60px * 0.15);
+  width: calc(100px * 0.9);
+  background: white;
+  position: absolute;
+}
+
+.playground.x::before,
+.container.x .playground:not(.x):not(.circle):hover::before {
+  transform: rotate(45deg);
+}
+
+.playground.x::after,
+.container.x .playground:not(.x):not(.circle):hover::after {
+  transform: rotate(-45deg);
+}
+
+/* Circle */
+.playground.circle::before,
+.playground.circle::after,
+.container.circle .playground:not(.x):not(.circle):hover::after,
+.container.circle .playground:not(.x):not(.circle):hover::after {
+  content: "";
+  height: calc(90px * 0.9);
+  width: calc(90px * 0.9);
+  background: white;
+  position: absolute;
+  border-radius: 50%;
+}
+
+/* Mensagem de Vitória */
+.message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  flex-direction: column;
+}
+
+.message-button {
+  font-size: 40px;
+  background-color: rgba(3, 201, 169, 9);
+  padding: 5px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+  color: white;
+}
+
+.message-button:hover {
+  color: rgba(3, 201, 169, 9);
+  background-color: white;
+}
+
+.message-text {
+  color: white;
+  font-size: 80px;
+}
+
+.show-message {
+  display: flex;
+}
